@@ -35,7 +35,8 @@ Licensed under the MIT License
 Feel free to customize the description based on your specific app, its features, and technologies used.
 
 
-<img src="https://github.com/sdsahdev/whatsapp_status_download/assets/86869319/8cfac0bd-556f-421f-9e0a-20bb5ffed93b" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
-<img src="https://github.com/sdsahdev/whatsapp_status_download/assets/86869319/aa9e8eb1-0854-4b39-914a-58b0633b8ef6" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
-<img src="https://github.com/sdsahdev/whatsapp_status_download/assets/86869319/158a83b3-890d-457e-b506-67ffc40f1f8a" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+
+<img src="https://github.com/sdsahdev/Whastapp_status_saver/assets/86869319/caf940ff-d933-4aba-8080-f22c9eb8f9b4" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+<img src="https://github.com/sdsahdev/Whastapp_status_saver/assets/86869319/d3b16111-6eaa-4cbb-bcf5-232e7c7b0a41" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+<img src="https://github.com/sdsahdev/Whastapp_status_saver/assets/86869319/3b1a3fdb-c625-4218-a885-4b33f02a5323" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
 
