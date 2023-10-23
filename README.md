@@ -27,6 +27,7 @@ WhatsApp Status Download is the ultimate app to effortlessly save and share What
 <img src="https://github.com/sdsahdev/Whastapp_status_saver/assets/86869319/3b1a3fdb-c625-4218-a885-4b33f02a5323" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
 
 
+
 🛠️ Installation and Usage:
 
 Clone or download the project repository from GitHub.
@@ -36,7 +37,7 @@ Grant the necessary permissions, including the MediaStore permission, for the ap
 Launch the app and connect it to your WhatsApp account.
 Start browsing and viewing statuses from your contacts.
 Select and download the statuses you wish to save.
-🛠️ Technologies Used:
+
 
 👨‍💻 Programming Language: Java
 
