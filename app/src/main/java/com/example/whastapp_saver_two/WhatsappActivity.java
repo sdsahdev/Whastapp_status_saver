@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -44,6 +45,15 @@ import com.example.whastapp_saver_two.fragments.WhatsappQImageFragment;
 import com.example.whastapp_saver_two.fragments.WhatsappQVideoFragment;
 import com.example.whastapp_saver_two.fragments.WhatsappVideoFragment;
 import com.example.whastapp_saver_two.util_items.Utils;
+import com.google.android.datatransport.BuildConfig;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
@@ -53,8 +63,8 @@ import java.util.List;
 public class WhatsappActivity extends AppCompatActivity {
     private ActivityWhatsappBinding binding;
     private WhatsappActivity activity;
-//    private InterstitialAd interstitialAd;
-
+    private InterstitialAd interstitialAd;
+    private AdView adView;
     private File[] allfiles;
     private ArrayList<Uri> fileArrayList;
     ProgressDialog progressDialog;
@@ -73,8 +83,8 @@ public class WhatsappActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_whatsapp);
         activity = this;
         createFileFolder();
-//        loadAd();
-
+        loadAd();
+        BannerAd();
         if (Build.VERSION.SDK_INT >= 23) {
             checkPermissions(0);
         }
@@ -430,49 +440,74 @@ public class WhatsappActivity extends AppCompatActivity {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
-//        else if (interstitialAd != null) {
-//            interstitialAd.show(this);
-//            interstitialAd.setFullScreenContentCallback(
-//                    new FullScreenContentCallback() {
-//                        @Override
-//                        public void onAdDismissedFullScreenContent() {
-//                            WhatsappActivity.this.interstitialAd = null;
-//                            onBackPressed();
-//
-//                        }
-//
-//                        @Override
-//                        public void onAdFailedToShowFullScreenContent(AdError adError) {
-//                            WhatsappActivity.this.interstitialAd = null;
-//                        }
-//
-//                        @Override
-//                        public void onAdShowedFullScreenContent() {
-//                        }
-//                    });
-//        }
+        else if (interstitialAd != null) {
+            interstitialAd.show(this);
+            interstitialAd.setFullScreenContentCallback(
+                    new FullScreenContentCallback() {
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            WhatsappActivity.this.interstitialAd = null;
+                            onBackPressed();
+
+                        }
+
+                        @Override
+                        public void onAdFailedToShowFullScreenContent(AdError adError) {
+                            WhatsappActivity.this.interstitialAd = null;
+                        }
+
+                        @Override
+                        public void onAdShowedFullScreenContent() {
+                        }
+                    });
+        }
         else {
             super.onBackPressed();
         }
 
     }
+    private void BannerAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView = findViewById(R.id.adView);
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
 
-//    public void loadAd() {
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        InterstitialAd.load(
-//                this,
-//                getString(R.string.InterstitialAd),
-//                adRequest,
-//                new InterstitialAdLoadCallback() {
-//                    @Override
-//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-//                        WhatsappActivity.this.interstitialAd = interstitialAd;
-//                    }
-//
-//                    @Override
-//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-//                        interstitialAd = null;
-//                    }
-//                });
-//    }
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                super.onAdFailedToLoad(adError);
+
+                adView.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdClosed() {
+
+                super.onAdClosed();
+            }
+        });
+
+    }
+
+    public void loadAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(
+                this,
+                getString(R.string.InterstitialAd),
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        WhatsappActivity.this.interstitialAd = interstitialAd;
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        interstitialAd = null;
+                    }
+                });
+    }
 }

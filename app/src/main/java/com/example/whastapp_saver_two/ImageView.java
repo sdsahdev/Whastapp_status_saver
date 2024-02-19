@@ -23,7 +23,6 @@ public class ImageView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
-        Toast.makeText(ImageView.this, " 3", Toast.LENGTH_SHORT).show();
 
         Intent intent = getIntent();
         String file1 = intent.getStringExtra("file");
@@ -37,7 +36,6 @@ public class ImageView extends AppCompatActivity {
         });
 
 
-        Toast.makeText(this, "fillee " + file, Toast.LENGTH_SHORT).show();
 
 //        if (file.exists()) {
 

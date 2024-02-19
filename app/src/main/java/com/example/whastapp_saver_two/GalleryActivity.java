@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.whastapp_saver_two.databinding.ActivityGalleryBinding;
 import com.example.whastapp_saver_two.fragments.WhatsAppDowndlededFragment;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +32,8 @@ import java.util.List;
 public class GalleryActivity  extends AppCompatActivity {
     GalleryActivity activity;
     ActivityGalleryBinding binding;
-//    private AdView adView;
-//    private InterstitialAd interstitialAd;
+    private AdView adView;
+    private InterstitialAd interstitialAd;
 
 
     @Override
@@ -35,9 +42,8 @@ public class GalleryActivity  extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_gallery);
         activity = this;
 
-
-//        loadAd();
-//        BannerAd();
+        loadAd();
+        BannerAd();
         initViews();
     }
 
@@ -111,58 +117,59 @@ public class GalleryActivity  extends AppCompatActivity {
 
 
 
-//    private void BannerAd() {
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        adView = findViewById(R.id.adView);
-//        adView.loadAd(adRequest);
-//        adView.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdLoaded() {
-//                super.onAdLoaded();
-//            }
-//
-//            @Override
-//            public void onAdFailedToLoad(LoadAdError adError) {
-//                super.onAdFailedToLoad(adError);
-//                adView.loadAd(adRequest);
-//            }
-//
-//            @Override
-//            public void onAdClosed() {
-//
-//                super.onAdClosed();
-//            }
-//        });
-//
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        if (interstitialAd != null) {
-//            interstitialAd.show(this);
-//        }  else {
-//            super.onBackPressed();
-//        }
-//
-//    }
-//
-//    public void loadAd() {
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        InterstitialAd.load(
-//                this,
-//                getString(R.string.InterstitialAd),
-//                adRequest,
-//                new InterstitialAdLoadCallback() {
-//                    @Override
-//                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-//                        GalleryActivity.this.interstitialAd = interstitialAd;
-//                    }
-//
-//                    @Override
-//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-//                        interstitialAd = null;
-//                    }
-//                });
-//    }
+    private void BannerAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView = findViewById(R.id.adView);
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                super.onAdFailedToLoad(adError);
+
+                adView.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdClosed() {
+
+                super.onAdClosed();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (interstitialAd != null) {
+            interstitialAd.show(this);
+        }  else {
+            super.onBackPressed();
+        }
+
+    }
+
+    public void loadAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(
+                this,
+                getString(R.string.InterstitialAd),
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        GalleryActivity.this.interstitialAd = interstitialAd;
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        interstitialAd = null;
+                    }
+                });
+    }
 
 }

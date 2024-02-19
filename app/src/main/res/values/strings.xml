@@ -3,10 +3,15 @@
     <string name="app_name_nev">Social\nSaver</string>
     <string name="versioncode">V1.6.8.19</string>
 
+<!--old app ids-->
+<!--    <string name="App_ID">ca-app-pub-4577382853353362~2111725699</string>-->
+<!--    <string name="BannerAd">ca-app-pub-3940256099942544/2934735716</string>-->
+<!--    <string name="InterstitialAd">ca-app-pub-3940256099942544/4411468910</string>-->
 
-<!--    <string name="App_ID">ca-app-pub-4577382853353362~2111725699(old)</string>-->
-<!--    <string name="BannerAd">ca-app-pub-4577382853353362/8094502507old)</string>-->
-<!--    <string name="InterstitialAd">ca-app-pub-4577382853353362/2842175826old)ad</string>-->
+<!--    sahdev real ids-->
+    <string name="App_ID">ca-app-pub-6573340072710001~9528701153</string>
+    <string name="BannerAd">ca-app-pub-6573340072710001/6796109494</string>
+    <string name="InterstitialAd">ca-app-pub-6573340072710001/8999601001</string>
 
     <string name="ad_attribution">Ad</string>
 

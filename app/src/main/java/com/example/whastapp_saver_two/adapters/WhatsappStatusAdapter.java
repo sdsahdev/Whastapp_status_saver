@@ -231,7 +231,6 @@ public class WhatsappStatusAdapter extends RecyclerView.Adapter<WhatsappStatusAd
     private void getLocalBitmapUri(ImageView couponImage) {
         // Extract Bitmap from ImageView drawable
 
-        Toast.makeText(context, "clicked123", Toast.LENGTH_SHORT).show();
 
 
         Drawable drawable = couponImage.getDrawable();
@@ -239,13 +238,11 @@ public class WhatsappStatusAdapter extends RecyclerView.Adapter<WhatsappStatusAd
         if (drawable instanceof BitmapDrawable) {
             bmp = ((BitmapDrawable) couponImage.getDrawable()).getBitmap();
         } else {
-            Toast.makeText(context, "else123", Toast.LENGTH_SHORT).show();
             return;
         }
         // Store image to default external storage directory
         Uri bmpUri = null;
         Log.d("previewUrl", "getLocalBitmapUri: " + bmpUri);
-        Toast.makeText(context, "clicked1234", Toast.LENGTH_SHORT).show();
         try {
             Log.d("previewUrl", "getLocalBitmapUri: " + bmpUri);
             // Use methods on Context to access package-specific directories on external storage.
